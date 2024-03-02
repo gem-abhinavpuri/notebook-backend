@@ -19,6 +19,15 @@ router.get('/fetchallnotes', fetchuser, async (req, res) => {
     }
 })
 
+router.get('/test',async (req, res) => {
+    try {
+        res.json({ "Success": "Working"});
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
+
 // ROUTE 2: Add a new Note using: POST "/api/notes/addnote". Login required
 router.post('/addnote', fetchuser, [
     body('title', 'Enter a valid title').isLength({ min: 3 }),
